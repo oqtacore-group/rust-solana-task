@@ -1,15 +1,10 @@
 describe("access_counter", () => {
-  // Configure the client to use the local cluster
-  anchor.setProvider(anchor.AnchorProvider.env());
-
-  const program = anchor.workspace.AccessCounter as anchor.Program<AccessCounter>;
-  
   const user = pg.wallet;
   let counterPda: web3.PublicKey;
   let bump: number;
 
   before(async () => {
-    if (!program) {
+    if (!pg.program) {
       throw new Error(
         "Program not loaded. Build your program before running tests."
       );
@@ -17,12 +12,12 @@ describe("access_counter", () => {
 
     [counterPda, bump] = await web3.PublicKey.findProgramAddress(
       [Buffer.from("counterN"), user.publicKey.toBuffer()],
-      program.programId
+      pg.program.programId
     );
   });
 
   it("Initializes counter using pg.wallet", async () => {
-    const tx = await program.methods
+    const tx = await pg.program.methods
       .initialize(bump)
       .accounts({
         counter: counterPda,
@@ -31,13 +26,13 @@ describe("access_counter", () => {
       })
       .rpc();
 
-    const account = await program.account.counterAccount.fetch(counterPda);
+    const account = await pg.program.account.counterAccount.fetch(counterPda);
     assert.equal(account.count.toNumber(), 0);
     assert.ok(account.authority.equals(user.publicKey));
   });
 
   it("Allows authority to increment counter", async () => {
-    const tx = await program.methods
+    const tx = await pg.program.methods
       .increment()
       .accounts({
         counter: counterPda,
@@ -45,7 +40,7 @@ describe("access_counter", () => {
       })
       .rpc();
 
-    const account = await program.account.counterAccount.fetch(counterPda);
+    const account = await pg.program.account.counterAccount.fetch(counterPda);
     assert.equal(account.count.toNumber(), 1);
   });
 
@@ -55,14 +50,14 @@ describe("access_counter", () => {
   //   const stranger = web3.Keypair.generate();
 
   //   // Airdrop to stranger so he can sign
-  //   const sig = await program.provider.connection.requestAirdrop(
+  //   const sig = await pg.connection.requestAirdrop(
   //     stranger.publicKey,
   //     web3.LAMPORTS_PER_SOL
   //   );
-  //   await program.provider.connection.confirmTransaction(sig);
+  //   await pg.connection.confirmTransaction(sig);
 
   //   try {
-  //     await program.methods
+  //     await pg.program.methods
   //       .increment()
   //       .accounts({
   //         counter: counterPda,
