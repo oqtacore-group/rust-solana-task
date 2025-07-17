@@ -1,8 +1,3 @@
-import * as anchor from "@coral-xyz/anchor";
-import assert from "assert";
-import * as web3 from "@solana/web3.js";
-import type { AccessCounter } from "../target/types/access_counter";
-
 describe("access_counter", () => {
   // Configure the client to use the local cluster
   anchor.setProvider(anchor.AnchorProvider.env());
