@@ -1,36 +1,36 @@
 # EN. General Instructions
-	•	The assignment will be provided in the README.md file of the repository.
-	•	The candidate must share their screen.
-	•	You will need to open Solpg IDE (https://beta.solpg.io/) and import the GitHub repository (the link will be sent in the Zoom chat after you start screen sharing).
-	•	You’ll be asked to complete a simple task: a Rust counter Solana Smart Contract.
-	•	The main KPI for evaluating your performance: applying all your knowledge of Rust + Anchor + Solana / successfully compiling the smart contract / passing test scenarios.
-	•	The task is intentionally simple; one of the key requirements is making independent decisions.
-	•	Test your contract using the Client → Test panel in Solpg.
-	•	Once you’re done, please share your project using the Share button, and we’ll review and provide feedback.
-	•	Important: You are not allowed to use AI tools. Using Google or the official documentation is acceptable and encouraged.
+- The assignment will be provided in the README.md file of the repository.
+- The candidate must share their screen.
+- You will need to open Solpg IDE (https://beta.solpg.io/) and import the GitHub repository (the link will be sent in the Zoom chat after you start screen sharing).
+- You’ll be asked to complete a simple task: a Rust counter Solana Smart Contract.
+- The main KPI for evaluating your performance: applying all your knowledge of Rust + Anchor + Solana / successfully compiling the smart contract / passing test scenarios.
+- The task is intentionally simple; one of the key requirements is making independent decisions.
+- Test your contract using the Client → Test panel in Solpg.
+- Once you’re done, please share your project using the Share button, and we’ll review and provide feedback.
+- Important: You are not allowed to use AI tools. Using Google or the official documentation is acceptable and encouraged.
 
 ## Assignment: Mini Counter with Access Control (Rust + Anchor for Solana)
 
 You need to develop a smart contract on Solana that implements a simple counter. The counter must:
-	•	store a number (u64);
-	•	allow incrementing only by the creator (authority) of the counter;
-	•	allow any user to read the current count;
-	•	be implemented using the Anchor framework.
+- store a number (u64);
+- allow incrementing only by the creator (authority) of the counter;
+- allow any user to read the current count;
+- be implemented using the Anchor framework.
 
 ## Technical Requirements:
-	1.	Create an Anchor project named access_counter.
-	2.	Define an account struct CounterAccount with:
-	•	count: u64;
-	•	authority: Pubkey (the creator of the counter).
-	3.	Write an initialize(ctx) instruction that creates and initializes the CounterAccount.
-	4.	Write an increment(ctx) instruction that checks whether the signer matches the authority, and increments count only if so.
-	5.	Write a get_count(ctx) instruction — it can be empty; its purpose is to show how to read account data.
+1. Create an Anchor project named access_counter.
+2. Define an account struct CounterAccount with:
+* * count: u64;
+* * authority: Pubkey (the creator of the counter).
+3. Write an initialize(ctx) instruction that creates and initializes the CounterAccount.
+4. Write an increment(ctx) instruction that checks whether the signer matches the authority, and increments count only if so.
+5. Write a get_count(ctx) instruction — it can be empty; its purpose is to show how to read account data.
 
 ### Solana Helpers
-	1.	Run build and deploy of your contract.
-	2.	If you need more SOL:
-	•	Your wallet / balance / network can be seen at the bottom of the IDE;
-	•	You can use the faucet: https://faucet.solana.com/
+1. Run build and deploy of your contract.
+2. If you need more SOL:
+* * Your wallet / balance / network can be seen at the bottom of the IDE;
+* * You can use the faucet: https://faucet.solana.com/
 
 # RU. Общие положения
 - Cамо задание будет в README.md репозитория
